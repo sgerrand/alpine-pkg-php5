@@ -1,0 +1,54 @@
+diff --git a/Zend/configure.in b/Zend/configure.in
+index 2f24abc..50588bb 100644
+--- a/Zend/configure.in
++++ b/Zend/configure.in
+@@ -75,7 +75,7 @@ int zend_sprintf(char *buffer, const char *format, ...);
+ #elif defined(HAVE_FPCLASS)
+ #define zend_isnan(a) ((fpclass(a) == FP_SNAN) || (fpclass(a) == FP_QNAN))
+ #else
+-#define zend_isnan(a) 0
++#define zend_isnan(a) ((a) != (a))
+ #endif
+ #endif
+ 
+diff --git a/Zend/tests/bug73954.phpt b/Zend/tests/bug73954.phpt
+new file mode 100644
+index 0000000..a7d9352
+--- /dev/null
++++ b/Zend/tests/bug73954.phpt
++--TEST--
++Bug #73954 (NAN check fails on Alpine Linux with musl)
++--FILE--
++<?php
++
++var_dump(NAN);
++var_dump(is_nan(NAN));
++
++function takes_int(int $int) {
++}
++
++takes_int(NAN);
++
++?>
++--EXPECTF--
++float(NAN)
++bool(true)
++
++Fatal error: Uncaught TypeError: Argument 1 passed to takes_int() must be of the type integer, float given, called in %s on line 9 and defined in %s:6
++Stack trace:
++#0 %s(9): takes_int(NAN)
++#1 {main}
++  thrown in %s on line 6
+diff --git a/configure.in b/configure.in
+index c7edee2..a7d9352 100644
+--- a/configure.in
++++ b/configure.in
+@@ -80,7 +80,7 @@ int zend_sprintf(char *buffer, const char *format, ...);
+ #elif defined(HAVE_FPCLASS)
+ #define zend_isnan(a) ((fpclass(a) == FP_SNAN) || (fpclass(a) == FP_QNAN))
+ #else
+-#define zend_isnan(a) 0
++#define zend_isnan(a) ((a) != (a))
+ #endif
+ #endif
+ 

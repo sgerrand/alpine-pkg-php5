@@ -1,10 +1,11 @@
 # Contributor: Andy Blyler <andy@blyler.cc>
 # Contributor: Łukasz Jendrysik <scadu@yandex.com>
 # Contributor: Carlo Landmeter <clandmeter@gmail.com>
-# Maintainer: Matt Smith <mcs@darkregion.net>
+# Contributor: Matt Smith <mcs@darkregion.net>
+# Maintainer: Sasha Gerrand <alpine-pkgs@sgerrand.com>
 pkgname=php5
 pkgver=5.6.36
-pkgrel=0
+pkgrel=1
 pkgdesc="The PHP language runtime engine"
 url="http://www.php.net/"
 arch="all"
@@ -112,6 +113,7 @@ source="http://php.net/distributions/php-$pkgver.tar.bz2
 	php-fpm.initd
 	php5-module.conf
 	php-install-pear-xml.patch
+	php-nan-check.patch
 	gd-iconv.patch
 	"
 
@@ -522,4 +524,5 @@ sha512sums="39988e3be529cdbb12aab848de7bc132475e2c81d322403bc7015b6f8c178334f2bc
 f7d922cab98617ef910b4c14974e768c85e60424cd1b216f688b34b2d823b642a5b896463008c134ce47c150f9407f5c438823b7e7bc89b3fb440cd3e97b9d7e  php-fpm.initd
 d1dd6a5764e18414476aaaa109efcc568696ac17a61a1afdf7d0621d3e38c5be717a81ee4d11d28963f11e76879af7d3806970e651061f8c4abffb03c4bd5af4  php5-module.conf
 f1177cbf6b1f44402f421c3d317aab1a2a40d0b1209c11519c1158df337c8945f3a313d689c939768584f3e4edbe52e8bd6103fb6777462326a9d94e8ab1f505  php-install-pear-xml.patch
+975f5a4bd4c45c6844c034b6a6148353274d2bb238cf3965909612c8cb25b9520730f9ba2ccfe74a664720e123d1b51a05b60af928901c5402c623726218acf0  php-nan-check.patch
 6ecd0be2da1dc5b1d7512e46a2a5cd107a8b2a8c364efc9c624a7d6b2ab081685a329c94c22c970dc14c5c1115f702c512e97ae858da1bc69c6423323dbeeba2  gd-iconv.patch"
